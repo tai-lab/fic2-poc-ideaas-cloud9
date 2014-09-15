@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 ME=`readlink "$0" || echo "$0"`
 cd `dirname "$ME"`/..
 

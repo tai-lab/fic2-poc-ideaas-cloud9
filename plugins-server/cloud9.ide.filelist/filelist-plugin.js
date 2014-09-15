@@ -64,6 +64,7 @@ module.exports = function setup(options, imports, register) {
 
                 // and kick off the download action!
                 var query = Url.parse(req.url, true).query;
+
                 query.showHiddenFiles = !!parseInt(query.showHiddenFiles, 10);
 
                 Filelist.exec(query, Vfs,
@@ -71,9 +72,10 @@ module.exports = function setup(options, imports, register) {
                     function(msg) {
                         if (!msg)
                             return;
-
-                        if (!res.headerSent)
+			debugger;
+                        if (!res._header) {
                             res.writeHead(200, { "content-type": "text/plain" });
+			}
                         res.write(msg);
                     },
                     // process exit
@@ -82,7 +84,7 @@ module.exports = function setup(options, imports, register) {
                             return res.end();
 
                         var errMsg = "Process terminated with code " + code + ", " + stderr;
-                        if (!res.headerSent)
+                        if (!res._header)
                             return next(errMsg);
 
                         console.error(errMsg);

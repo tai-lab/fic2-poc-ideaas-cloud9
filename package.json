@@ -17,7 +17,7 @@
         "amd-loader": "0.0.4",
         "colors": "~0.6.0-1",
         "connect": "1.8.7",
-
+	
         "http-error": "0.0.1",
         "simple-template": "0.0.1",
 
@@ -34,7 +34,7 @@
 
         "vfs-local": "https://github.com/c9/vfs-local/tarball/5a95c4a7b313acef3338c31da0001a0d13e9c452",
         "architect": "~0.1.10",
-        "connect-architect": "0.0.6",
+        "connect-architect": "https://github.com/c9/connect-architect/tarball/74e9fcedf92356c3a060b59f77267fd38811c621",
         "architect-agent": "0.2.2",
         "architect-socket-transport": "0.3.0",
 
