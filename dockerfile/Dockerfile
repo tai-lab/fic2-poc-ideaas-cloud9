@@ -23,7 +23,7 @@ ENV HOME /home/ubuntu
 RUN mkdir $HOME/workspace
 RUN git clone https://github.com/creationix/nvm.git $HOME/.nvm
 RUN echo "source $HOME/.nvm/nvm.sh" >> $HOME/.bashrc
-RUN /bin/bash -l -c 'source $HOME/.nvm/nvm.sh && nvm install v0.8.22 && nvm alias default v0.8.22'
+RUN /bin/bash -l -c 'source $HOME/.nvm/nvm.sh && nvm install v0.8.22 && nvm use v0.8.22 && nvm alias default v0.8.22'
 
 
 RUN /bin/bash -l -c 'source $HOME/.nvm/nvm.sh && cd /var/opt/cloud9 && sm install'
