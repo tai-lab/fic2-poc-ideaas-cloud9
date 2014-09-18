@@ -85,7 +85,12 @@ module.exports = function setup(options, imports, register) {
 
         server.use(function(req, res, next) {
             req.parsedUrl = parseUrl(req.url);
-
+	    log.info('hit: ' + req.parseUrl +
+		     ' (' + req.url + ')' +
+		     '; uid=' + req.session.uid + 
+		     '; anonid=' + req.session.anonid +
+		     '; workspaceId=' + ide.options.workspaceId);
+	    debugger;
             if (!(req.session.uid || req.session.anonid))
                 return next(new error.Unauthorized());
             // NOTE: This gets called multiple times!

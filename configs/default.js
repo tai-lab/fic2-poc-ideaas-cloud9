@@ -225,6 +225,7 @@ var config = [
     },
     "./cloud9.ide.shell",
     "./cloud9.ide.state",
+    "./tai.connect.custom-auth",
     "./cloud9.ide.watcher"
 ];
 

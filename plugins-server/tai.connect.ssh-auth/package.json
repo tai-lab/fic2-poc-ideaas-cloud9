@@ -1,0 +1,17 @@
+{
+    "name": "tai.connect.ssh-auth",
+    "version": "0.0.1",
+    "private": true,
+    "main": "auth.js",
+
+    "dependencies": {
+	"crypto": "*",
+    	"http-signature": "*",
+    	"keypair": "~1.0.0"
+    },
+
+    "plugin": {
+        "consumes": ["connect", "log"],
+        "provides": []
+    }
+}
