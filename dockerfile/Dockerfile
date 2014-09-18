@@ -33,4 +33,4 @@ RUN /bin/bash -l -c 'cd /var/opt/cloud9 && sm install'
 ENV C9PORT 3131
 EXPOSE 3131
 WORKDIR /var/opt/cloud9
-CMD /bin/bash -l -c "bin/cloud9.sh -l 0.0.0.0 -p $C9PORT -w $HOME/workspace"
+CMD /bin/bash -l -c "bin/cloud9.sh -l 0.0.0.0 -p $C9PORT --username \"$C9USERNAME\" --password \"$C9PASSWORD\" -w $HOME/workspace"
