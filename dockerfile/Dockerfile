@@ -19,7 +19,8 @@ ADD cloud9-master.tar.gz /var/opt/
 RUN chown -R 'ubuntu:ubuntu' /var/opt/cloud9
 
 
-RUN echo 'source $HOME/.nvm/nvm.sh' >> /etc/profile
+RUN echo '. $HOME/.nvm/nvm.sh' >> /etc/profile
+RUN echo 'export ETCPROFILELOADED=1' >> /etc/profile
 USER ubuntu
 ENV HOME /home/ubuntu
 RUN mkdir $HOME/workspace

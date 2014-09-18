@@ -229,11 +229,16 @@ var config = [
 ];
 
 if (useAuth) {
+    var util = require("util");
+    util.print("*** Enabling Auth ***\n");
     config.push({
         packagePath: "./cloud9.connect.basic-auth",
         username: argv.username,
         password: argv.password
     });
+} else {
+    var util = require("util");
+    util.print("*** Disabling Auth ***\n");
 }
 
 module.exports = config;

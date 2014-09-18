@@ -1,15 +1,15 @@
-#!/bin/sh -l
+#!/bin/sh
 ME=`readlink "$0" || echo "$0"`
 cd `dirname "$ME"`/..
 
 make worker
 
-set -x
 echo '-- 1 ----------------------------------------'
 env
 echo '-- 2 ----------------------------------------'
-nvm ls
+/bin/bash -l -c 'nvm ls'
 echo '-- 3 ----------------------------------------'
+set -x
 
 case `uname -a` in
 Linux*x86_64*)  echo "Linux 64 bit"
