@@ -1,6 +1,8 @@
 FROM ubuntu:14.04
 MAINTAINER Tai <tai@thalesgroup.com>
 
+ENTRYPOINT /bin/bash -l -c
+
 ENV HOME /root
 RUN apt-get -y update
 #RUN apt-get -y upgrade
@@ -31,4 +33,4 @@ RUN /bin/bash -l -c 'source $HOME/.nvm/nvm.sh && cd /var/opt/cloud9 && sm instal
 ENV C9PORT 3131
 EXPOSE 3131
 WORKDIR /var/opt/cloud9
-CMD /bin/bash -l -c "bin/cloud9.sh -l 0.0.0.0 -p $C9PORT -w $HOME/workspace"
+CMD env && id && bin/cloud9.sh -l 0.0.0.0 -p $C9PORT -w $HOME/workspace

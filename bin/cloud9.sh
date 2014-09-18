@@ -5,6 +5,12 @@ cd `dirname "$ME"`/..
 
 make worker
 
+echo '------------------------------------------'
+env
+echo '------------------------------------------'
+nvm ls
+echo '------------------------------------------'
+
 case `uname -a` in
 Linux*x86_64*)  echo "Linux 64 bit"
     node server.js "$@" -a x-www-browser
