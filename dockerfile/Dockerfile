@@ -5,7 +5,7 @@ MAINTAINER Tai <tai@thalesgroup.com>
 ENV HOME /root
 RUN apt-get -y update
 #RUN apt-get -y upgrade
-RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial
+RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial cf-cli
 RUN npm install -g sm
 
 RUN /usr/sbin/useradd -U -m --shell /bin/bash ubuntu
