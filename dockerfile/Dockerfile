@@ -5,7 +5,8 @@ MAINTAINER Tai <tai@thalesgroup.com>
 ENV HOME /root
 RUN apt-get -y update
 #RUN apt-get -y upgrade
-RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial cf-cli
+RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial
+RUN wget -O /tmp/cli.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github' && dpkg -i /tmp/cli.deb
 RUN npm install -g sm
 
 RUN /usr/sbin/useradd -U -m --shell /bin/bash ubuntu
@@ -33,4 +34,4 @@ RUN /bin/bash -l -c 'cd /var/opt/cloud9 && sm install'
 ENV C9PORT 3131
 EXPOSE 3131
 WORKDIR /var/opt/cloud9
-CMD /bin/bash -l -c "bin/cloud9.sh -l 0.0.0.0 -p $C9PORT --username \"$C9USERNAME\" --password \"$C9PASSWORD\" -w $HOME/workspace"
+CMD /bin/bash -l -c "./start_c9.sh"
