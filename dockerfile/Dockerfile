@@ -5,7 +5,7 @@ MAINTAINER Tai <tai@thalesgroup.com>
 ENV HOME /root
 RUN apt-get -y update
 #RUN apt-get -y upgrade
-RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial
+RUN apt-get -y install curl wget man libxml2-dev nodejs nodejs-legacy npm git-core mercurial pylint
 RUN wget -O /tmp/cli.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github' && dpkg -i /tmp/cli.deb
 RUN npm install -g sm
 
