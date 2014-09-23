@@ -22,10 +22,10 @@ define(function(require, exports, module) {
 	var Transport = function(options) {
 		this.options = options;
 		this.options.host = this.options.host || document.location.hostname;
-		if (this.options.port === 443) {
+		if (document.location.protocol == "https:") {
 			this.options.secure = true;
 		}
-		this.options.port = this.options.port || document.location.port;
+	        this.options.port = document.location.port || this.options.port || 80;
 		this.options.path = this.options.prefix;
 		delete this.options.prefix;
 		this.id = false;
