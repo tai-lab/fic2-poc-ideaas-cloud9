@@ -698,13 +698,19 @@ module.exports = ext.register("ext/console/console", {
         menus.addItemByPath("Tools/~", new apf.divider(), 30000);
 
         var cmd = {
+	    "Cloud Foundry": [
+		["Login", "cf login --skip-ssl-validation -a 'https://api.cfapps.tailab.eu' -u 'foo' -p 'bar' -o 'demo1' -s 'dev'", null, null, true],
+		["Push", "cf push", null, null, true],
+		["Apps", "cf apps"]
+	    ],
             "Git" : [
                 ["Status", "git status"],
                 ["Push", "git push"],
                 ["Pull", "git pull"],
                 ["Stash", "git stash"],
                 ["Commit", "git commit -m ", null, null, true],
-                ["Checkout", "git checkout ", null, null, true]
+                ["Checkout", "git checkout ", null, null, true],
+		["Clone", "git clone ", null, null, true]
             ],
             "Hg" : [
                 ["Sum", "hg sum"],
