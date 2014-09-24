@@ -34,4 +34,5 @@ RUN /bin/bash -l -c 'cd /var/opt/cloud9 && sm install'
 ENV C9PORT 3131
 EXPOSE 3131
 WORKDIR /var/opt/cloud9
-CMD /bin/bash -l -c "./start_c9.sh"
+ENV C9TIMEOUT 15m
+CMD /bin/bash -l -c "/usr/bin/timeout -k 10s ${C9TIMEOUT:=15m} ./start_c9.sh"
