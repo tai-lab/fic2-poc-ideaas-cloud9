@@ -33,7 +33,8 @@ var config = [
     {
         packagePath: "./connect",
         port: port,
-        host: host
+        host: host,
+	debug: false
     }, {
         packagePath: "./connect.static",
         prefix: "/static"
@@ -63,7 +64,7 @@ var config = [
         host: host
     }, {
         packagePath: "./cloud9.core",
-        debug: false,
+        debug: true,
         fsUrl: fsUrl,
         smithIo: {
             port: port,
@@ -98,7 +99,7 @@ var config = [
             "ext/gotoline/gotoline",
             "ext/preview/preview",
             // "ext/deploy/deploy",
-            //"ext/log/log",
+            "ext/log/log",
             "ext/help/help",
             "ext/linereport/linereport",
             "ext/linereport_php/linereport_php",

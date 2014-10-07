@@ -3,7 +3,7 @@ var netutil = require("netutil");
 var connect = require("connect");
 
 module.exports = function startup(options, imports, register) {
-    imports.log.info("connect plugin start");
+    imports.log.info("connect plugin start: " + JSON.stringify(options));
 
     var server = connect();
 
@@ -44,6 +44,13 @@ module.exports = function startup(options, imports, register) {
 
     api.useSetup(connect.cookieParser());
     api.useSetup(connect.bodyParser());
+    if (options.debug) {
+	api.useSetup(
+	    function (req, res, next) {
+		imports.log.info(">>> " + req.method + " " + req.url + " " + JSON.stringify(req.headers) + "; <<< " + res.statusCode);	    
+		next();
+	    });
+    }
     if (options.serverId) {
         api.useSetup(function (req, res, next) {
             res.setHeader("X-C9-Server", options.serverId);
