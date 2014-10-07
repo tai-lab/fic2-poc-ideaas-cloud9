@@ -1,4 +1,4 @@
-.PHONY:    apf ext worker mode theme package test
+.PHONY:    apf ext worker mode theme package test patch
 
 default: apf worker
 
@@ -39,7 +39,7 @@ helper:
 helper_clean:
 	mkdir -p build/src
 	node build/packed_helper.js 1
-	
+
 # packages ext
 ext: 
 	node build/r.js -o build/app.build.js
@@ -109,3 +109,6 @@ package: helper c9core ext
 
 test check:
 	test/run-tests.sh	
+
+patch:
+	@if grep -q 'console.log("A!' node_modules/engine.io-client/engine.io.js; then echo "Patches were already applied"; else patch node_modules/engine.io-client/engine.io.js patches/engine.io-client_engine.io.js; fi
