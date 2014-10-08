@@ -29,7 +29,7 @@ RUN git clone https://github.com/creationix/nvm.git $HOME/.nvm
 RUN /bin/bash -l -c 'nvm install v0.8.22 && nvm use v0.8.22 && nvm alias default v0.8.22'
 
 
-RUN /bin/bash -l -c 'cd /var/opt/cloud9 && sm install'
+RUN /bin/bash -l -c 'cd /var/opt/cloud9 && npm install'
 
 ENV C9PORT 3131
 EXPOSE 3131
