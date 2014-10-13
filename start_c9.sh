@@ -22,5 +22,11 @@ else
     PORT="-p ${C9PORT}"
 fi
 
+if [ -z "${C9TRACE}" ]; then
+    TRACE=""
+else
+    TRACE="--trace"
+fi
 
-bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace"
+
+bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE

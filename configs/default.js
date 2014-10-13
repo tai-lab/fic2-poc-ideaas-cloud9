@@ -29,12 +29,14 @@ var debugPort = argv.b || process.env.DEBUG_PORT || 5858;
 
 var useAuth = argv.username && argv.password;
 
+var trace = argv.trace || false;
+
 var config = [
     {
         packagePath: "./connect",
         port: port,
         host: host,
-	debug: false
+	debug: trace
     }, {
         packagePath: "./connect.static",
         prefix: "/static"
