@@ -4,6 +4,8 @@
  */
 "use strict";
 
+var os = require("os");
+var crypto = require('crypto');
 var fs = require("fs");
 var argv = require('optimist').argv;
 var path = require("path");
@@ -171,13 +173,13 @@ var config = [
     },
     {
         packagePath: "./connect.session",
-        key: "cloud9.sid." + port,
-        secret: "v1234"
+        key: "cloud9.sid." + crypto.createHash('md5').update(os.hostname()).digest('hex') + "." + crypto.randomBytes(Math.ceil(8)).toString('hex'),
+        secret: "v1234" + crypto.randomBytes(Math.ceil(8)).toString('hex')
     },
     {
         packagePath: "./connect.session.file",
         sessionsPath: __dirname + "/../.sessions",
-        maxAge: 7 * 24 * 60 * 60 * 1000
+	maxAge: 60 * 1000
     },
     "./cloud9.permissions",
     {
