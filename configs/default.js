@@ -177,7 +177,7 @@ var config = [
         secret: "v1234" + crypto.randomBytes(Math.ceil(8)).toString('hex')
     },
     {
-        packagePath: "./connect.session.file",
+        packagePath: "./connect.session.memory",
         sessionsPath: __dirname + "/../.sessions",
 	maxAge: 60 * 1000
     },
