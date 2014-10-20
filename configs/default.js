@@ -32,6 +32,8 @@ var debugPort = argv.b || process.env.DEBUG_PORT || 5858;
 var useAuth = argv.username && argv.password;
 
 var trace = argv.trace || false;
+var containerId = argv.containerid || "undefined";
+require("util").print("*** " + "containerId=" + containerId + " ***\n");
 
 var config = [
     {

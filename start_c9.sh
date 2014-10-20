@@ -28,5 +28,12 @@ else
     TRACE="--trace"
 fi
 
+CONTAINER_ID=`cat /proc/self/cgroup | grep  -e 'docker' | head -n 1 | sed "s/.*\/docker\/\(.*\)/\1/"`
+if [ -z "${CONTAINER_ID}" ]; then
+    CONTAINER_ID=""
+else
+    CONTAINER_ID="--containerid ${CONTAINER_ID}"
+fi
 
-bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE
+bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE $CONTAINER_ID
+
