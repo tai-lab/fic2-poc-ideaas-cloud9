@@ -32,7 +32,7 @@ var debugPort = argv.b || process.env.DEBUG_PORT || 5858;
 var useAuth = argv.username && argv.password;
 
 var trace = argv.trace || false;
-var containerId = argv.containerid || "undefined";
+var containerId = argv.containerid || "";
 require("util").print("*** " + "containerId=" + containerId + " ***\n");
 
 var config = [
@@ -239,13 +239,38 @@ if (useAuth) {
     var util = require("util");
     util.print("*** Enabling Auth ***\n");
     config.push({
-        packagePath: "./cloud9.connect.basic-auth",
+        //packagePath: "./cloud9.connect.basic-auth",
+	packagePath: "./tai.connect.custom-oauth",
         username: argv.username,
-        password: argv.password
+        password: argv.password,
+	containerId: containerId
     });
 } else {
     var util = require("util");
     util.print("*** Disabling Auth ***\n");
 }
+
+if (process.env.C9EXTRACONFIG) {
+    var extra = null;
+    try {
+	var src = new Buffer(process.env.C9EXTRACONFIG, 'base64').toString('utf8');
+	extra = JSON.parse(src);
+	if (typeof(extra) != "object") {
+	    throw "Error: config is not an object";
+	}
+	for (var index = 0; index < config.length; ++index) {
+	    var elt = config[index];
+	    var inject = extra[elt.packagePath];
+	    if (inject) {
+		for (var ij in inject) {
+		    elt[ij] = inject[ij];
+		}
+	    }
+	}
+    } catch (x) {
+	util.print("*** Ignoring C9EXTRACONFIG ***\n");
+    }
+}
+
 
 module.exports = config;

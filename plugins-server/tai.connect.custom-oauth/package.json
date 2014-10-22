@@ -1,0 +1,10 @@
+{
+    "name": "tai.connect.custom-oauth",
+    "version": "0.0.1",
+    "private": true,
+    "main": "auth.js",
+    "plugin": {
+        "consumes": ["connect", "session", "log", "ide", "ide-routes"],
+        "provides": []
+    }
+}

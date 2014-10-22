@@ -47,7 +47,7 @@ module.exports = function startup(options, imports, register) {
     if (options.debug) {
 	api.useSetup(
 	    function (req, res, next) {
-		imports.log.info(">>> " + req.method + " " + req.url + " " + JSON.stringify(req.headers) + "; <<< " + res.statusCode);	    
+		imports.log.info("--- connect --> " + req.method + " " + req.url + " " + JSON.stringify(req.headers));	    
 		next();
 	    });
     }
