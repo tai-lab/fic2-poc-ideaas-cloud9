@@ -25,7 +25,7 @@ module.exports = function (options, imports, register) {
     // }
 
     var validationEndpoint = options.oauth.validationEndpoint;
-    var authorizedId = String(options.authorizedId);
+    var authorizedId = String(options.oauth.authorizedId);
     var passport = require('passport')
     , OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
     connect.useSession(passport.initialize());
@@ -49,7 +49,7 @@ module.exports = function (options, imports, register) {
 							if (response.statusCode != 200 || !body || !body['id']) {
 							    return done(null, false);
 							} else {
-							    var chal = body['id'];
+							    var chal = String(body['id']);
 							    var user = chal + "|" + accessToken + "|" + endpoint;
 							    if (chal == authorizedId) {
 								return done(null, user);   	
