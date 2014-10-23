@@ -251,9 +251,11 @@ if (useAuth) {
 }
 
 if (process.env.C9EXTRACONFIG) {
+    util.print("*** Processing C9EXTRACONFIG ***\n");
     var extra = null;
     try {
 	var src = new Buffer(process.env.C9EXTRACONFIG, 'base64').toString('utf8');
+	util.print("*** Got extra configuration:" + src );
 	extra = JSON.parse(src);
 	if (typeof(extra) != "object") {
 	    throw "Error: config is not an object";

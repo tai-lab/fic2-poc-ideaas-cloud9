@@ -35,5 +35,6 @@ else
     CONTAINER_ID="--containerid ${CONTAINER_ID}"
 fi
 
-bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE $CONTAINER_ID
+export NODE_TLS_REJECT_UNAUTHORIZED=0
 
+bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE $CONTAINER_ID
