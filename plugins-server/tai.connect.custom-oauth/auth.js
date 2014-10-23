@@ -25,7 +25,7 @@ module.exports = function (options, imports, register) {
     // }
 
     var validationEndpoint = options.oauth.validationEndpoint;
-    var authorizedId = options.authorizedId;
+    var authorizedId = str(options.authorizedId);
     var passport = require('passport')
     , OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
     connect.useSession(passport.initialize());
@@ -49,11 +49,14 @@ module.exports = function (options, imports, register) {
 							if (response.statusCode != 200 || !body || !body['id']) {
 							    return done(null, false);
 							} else {
-							    var user = body['id'] + "|" + accessToken + "|" + endpoint;
-							    if (body['id'] == authorizedId) {
+							    var chal = body['id'];
+							    var user = chal + "|" + accessToken + "|" + endpoint;
+							    if (chal == authorizedId) {
 								return done(null, user);   	
 							    } else {
-								console.log("!!! Unauthorized access by: " + user);
+								console.log("!!! Unauthorized access by: " + user + "; " +
+									    chal + "/" + typeof(chal) + " versus " +
+									    authorizedId + "/" + typeof(authorizedId));
 								return done(null, false);
 							    }
 							}
