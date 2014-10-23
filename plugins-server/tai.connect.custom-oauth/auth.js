@@ -25,7 +25,7 @@ module.exports = function (options, imports, register) {
     // }
 
     var validationEndpoint = options.oauth.validationEndpoint;
-    var authorizedId = str(options.authorizedId);
+    var authorizedId = String(options.authorizedId);
     var passport = require('passport')
     , OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
     connect.useSession(passport.initialize());
