@@ -28,7 +28,7 @@ else
     TRACE="--trace"
 fi
 
-CONTAINER_ID=`cat /proc/self/cgroup | grep  -e 'docker' | head -n 1 | sed "s/.*\/docker\/\(.*\)/\1/"`
+CONTAINER_ID=`cat /proc/self/cgroup | grep -e 'docker' | head -n 1 | sed "s/^.*docker[-/]//" | sed "s/[.]scope$//"`
 if [ -z "${CONTAINER_ID}" ]; then
     CONTAINER_ID=""
 else
