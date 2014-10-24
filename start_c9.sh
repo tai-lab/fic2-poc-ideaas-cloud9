@@ -35,6 +35,11 @@ else
     CONTAINER_ID="--containerid ${CONTAINER_ID}"
 fi
 
+if [ (! -z "${C9CFEND}") -a (! -z "${C9CFUSR}") -a (! -z "${C9CFPASS}") -a (! -z "${C9CFORG}") -a (! -z "${C9CFSPC}") ]; then
+    cf login --skip-ssl-validation -a 'https://api.cfapps.tailab.eu' -u "${C9CFUSR}" -p "${C9CFPASS}" -o "${C9CFORG}" -s "${C9CFSPC}" || true
+    unset C9CFPASS || true
+fi 
+
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 bin/cloud9.sh -l 0.0.0.0 $PORT --username "$C9USERNAME" --password "$C9PASSWORD" -w "$HOME/workspace" $TRACE $CONTAINER_ID

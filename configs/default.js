@@ -82,6 +82,11 @@ var config = [
         ],
         packed: false,
         packedName: "",
+	c9cfend: process.env.C9CFEND || "https://api.cfapps.tailab.eu",
+	c9cfusr: process.env.C9CFUSR || "foo",
+	c9cfpass: process.env.C9CFPASS || "xxx",
+	c9cforg: process.env.C9CFORG || "org",
+	c9cfspc: process.env.C9CFSPC || "spc",
         clientPlugins: [
             "ext/filesystem/filesystem",
             "ext/settings/settings",

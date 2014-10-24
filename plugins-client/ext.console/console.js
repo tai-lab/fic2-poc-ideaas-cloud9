@@ -699,7 +699,8 @@ module.exports = ext.register("ext/console/console", {
 
         var cmd = {
 	    "Cloud Foundry": [
-		["Login", "cf login --skip-ssl-validation -a 'https://api.cfapps.tailab.eu' -u 'foo' -p 'bar' -o 'demo1' -s 'dev'", null, null, true],
+		["Login", ("cf login --skip-ssl-validation -a '" + ide.c9cfend + "' -u '" + ide.c9cfusr + "' -p '" + ide.c9cfpass + "' -o '" +
+			   ide.c9cforg + "' -s '" + c9cfspc + "'"), null, null, true],
 		["Push", "cf push", null, null, true],
 		["Apps", "cf apps"]
 	    ],

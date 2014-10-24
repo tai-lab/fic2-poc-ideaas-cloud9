@@ -55,7 +55,12 @@ var Ide = module.exports = function(options) {
         env: options.env,
         local: options.local,
         packed: options.packed,
-        packedName: options.packedName
+        packedName: options.packedName,
+	c9cfend: options.c9cfend,
+	c9cfusr: options.c9cfusr,
+	c9cfpass: options.c9cfpass,
+	c9cforg: options.c9cforg,
+	c9cfspc: options.c9cfspc
     };
 
     this.$users = {};
@@ -146,7 +151,12 @@ util.inherits(Ide, EventEmitter);
             packedName: this.options.packedName,
             local: this.options.local,
             loadedDetectionScript: loadedDetectionScript,
-            _csrf: req.session && req.session._csrf || ""
+            _csrf: req.session && req.session._csrf || "",
+	    c9cfend: this.options.c9cfend,
+	    c9cfusr: this.options.c9cfusr,
+	    c9cfpass: this.options.c9cfpass,
+	    c9cforg: this.options.c9cforg,
+	    c9cfspc: this.options.c9cfspc
         };
 
         var settingsPlugin = this.workspace.getExt("settings");

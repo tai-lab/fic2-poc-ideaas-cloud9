@@ -37,6 +37,12 @@ define(function(require, exports, module) {
 
         this.onLine         = false;
         this.offlineFileSystemSupport = false;
+	
+	this.c9cfend = window.cloud9config.c9cfend;
+	this.c9cfusr = window.cloud9config.c9cfusr;
+	this.c9cfpass = window.cloud9config.c9cfpass;
+	this.c9cforg = window.cloud9config.c9cforg;
+	this.c9cfspc = window.cloud9config.c9cfspc;
 
         this.dispatchEvent("load");
 
