@@ -74,7 +74,12 @@ module.exports = function setup(options, imports, register) {
             env: options.env,
             packed: options.packed,
             packedName: options.packedName,
-            local: options.local
+            local: options.local,
+	    c9cfend: options.c9cfend,
+ 	    c9cfusr: options.c9cfusr,
+	    c9cfpass: options.c9cfpass,
+	    c9cforg: options.c9cforg,
+	    c9cfspc: options.c9cfspc
         });
 
         var connectModule = connect.getModule();

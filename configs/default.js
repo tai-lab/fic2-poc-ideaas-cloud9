@@ -279,5 +279,4 @@ if (process.env.C9EXTRACONFIG) {
     }
 }
 
-
 module.exports = config;

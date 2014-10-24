@@ -35,7 +35,7 @@ else
     CONTAINER_ID="--containerid ${CONTAINER_ID}"
 fi
 
-if [ (! -z "${C9CFEND}") -a (! -z "${C9CFUSR}") -a (! -z "${C9CFPASS}") -a (! -z "${C9CFORG}") -a (! -z "${C9CFSPC}") ]; then
+if ! (test -z "${C9CFEND}") && ! (test -z "${C9CFUSR}") && ! (test -z "${C9CFPASS}") && ! (test -z "${C9CFORG}") && ! (test -z "${C9CFSPC}"); then
     cf login --skip-ssl-validation -a 'https://api.cfapps.tailab.eu' -u "${C9CFUSR}" -p "${C9CFPASS}" -o "${C9CFORG}" -s "${C9CFSPC}" || true
     unset C9CFPASS || true
 fi 
